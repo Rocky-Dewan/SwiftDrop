@@ -95,6 +95,7 @@ DeliveryApp/
 1. Clone the repository:
 
   git clone https://github.com/Rocky-Dewan/SwiftDrop.git
+  
   cd SwiftDrop
 
 2. Setup backend:
@@ -164,3 +165,4 @@ DeliveryApp/
   GitHub: https://github.com/Rocky-Dewan
 
   SwiftDrop – Delivering essentials from A to Z across Bangladesh!
+
