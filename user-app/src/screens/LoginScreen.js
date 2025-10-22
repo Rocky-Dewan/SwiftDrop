@@ -7,7 +7,8 @@ import CustomButton from '../components/CustomButton';
 export default function LoginScreen({ navigation }) {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-
+  const dispatch = useDispatch();
+  const { status, error } = useSelector(s => s.user);
 
   const onLogin = async () => {
     try {
