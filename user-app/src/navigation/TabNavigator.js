@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
@@ -20,4 +18,3 @@ export default function TabNavigator() {
     </Tab.Navigator>
   );
 }
->>>>>>> Stashed changes
