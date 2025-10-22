@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { loginUser, registerUser, fetchProfile } from '../../services/userService';
@@ -75,4 +73,3 @@ const slice = createSlice({
 
 export const { logout, setUserFromStorage } = slice.actions;
 export default slice.reducer;
->>>>>>> Stashed changes
