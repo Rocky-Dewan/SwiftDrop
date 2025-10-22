@@ -34,7 +34,8 @@ export const loadProfile = createAsyncThunk('user/loadProfile', async (_, { reje
 });
 
 const initialState = {
-
+  user: null,
+  token: null,
   status: 'idle',
   error: null
 };
@@ -43,7 +44,12 @@ const slice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-
+    logout(state) {
+      state.user = null;
+      state.token = null;
+      AsyncStorage.removeItem('token');
+      AsyncStorage.removeItem('user');
+    },
     setUserFromStorage(state, action) {
       state.user = action.payload.user || null;
       state.token = action.payload.token || null;
@@ -51,15 +57,15 @@ const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-
+      .addCase(login.pending, (s) => { s.status = 'loading'; s.error = null; })
       .addCase(login.fulfilled, (s, a) => { s.status = 'succeeded'; s.user = a.payload.user; s.token = a.payload.token; })
       .addCase(login.rejected, (s, a) => { s.status = 'failed'; s.error = a.payload; })
 
-
+      .addCase(register.pending, (s) => { s.status = 'loading'; s.error = null; })
       .addCase(register.fulfilled, (s, a) => { s.status = 'succeeded'; s.user = a.payload.user; s.token = a.payload.token; })
       .addCase(register.rejected, (s, a) => { s.status = 'failed'; s.error = a.payload; })
 
-
+      .addCase(loadProfile.pending, (s) => { s.status = 'loading'; })
       .addCase(loadProfile.fulfilled, (s, a) => { s.status = 'succeeded'; s.user = a.payload; })
       .addCase(loadProfile.rejected, (s, a) => { s.status = 'failed'; s.error = a.payload; });
   }
