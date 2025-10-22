@@ -23,13 +23,14 @@ export default function CheckoutScreen() {
     try {
       const res = await dispatch(placeOrder(payload)).unwrap();
       dispatch(clearCart());
-      
+      Alert.alert('Order placed', `Order ID: ${res._id}`);
+      nav.navigate('Orders');
     } catch (err) {
       Alert.alert('Error', err || 'Failed to place order');
     }
   };
 
-  const subtotal = cart.reduce((s, i) => s * i.price + i.qty, 0);
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
   const total = subtotal + (cart.length ? 30 : 0);
 
   return (
