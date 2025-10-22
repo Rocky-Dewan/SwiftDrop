@@ -9,7 +9,12 @@ export default function ProductDetails({ route, navigation }) {
   const [product, setProduct] = useState(null);
   const dispatch = useDispatch();
 
-
+  useEffect(() => {
+    api.get(`/products/${id}`).then(r => setProduct(r.data)).catch(err => {
+      console.error(err);
+      Alert.alert('Error', 'Failed to load product');
+    });
+  }, [id]);
 
   if (!product) return <View style={{ padding: 16 }}><Text>Loading...</Text></View>;
 
