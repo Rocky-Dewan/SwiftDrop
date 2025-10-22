@@ -21,8 +21,14 @@ const slice = createSlice({
       const id = action.payload;
       state.items = state.items.filter(i => i.product !== id);
     },
-
-  });
+    updateQty(state, action) {
+      const { productId, qty } = action.payload;
+      const idx = state.items.findIndex(i => i.product === productId);
+      if (idx >= 0) state.items[idx].qty = qty;
+    },
+    clearCart(state) { state.items = []; }
+  }
+});
 
 export const { addToCart, removeFromCart, updateQty, clearCart } = slice.actions;
 export default slice.reducer;
