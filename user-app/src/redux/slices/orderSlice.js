@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../services/api';
 
@@ -38,4 +36,3 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
->>>>>>> Stashed changes
