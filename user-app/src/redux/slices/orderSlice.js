@@ -10,6 +10,14 @@ export const placeOrder = createAsyncThunk('orders/place', async (payload, { rej
   }
 });
 
+export const fetchMyOrders = createAsyncThunk('orders/fetchMy', async (_, { rejectWithValue }) => {
+  try {
+    const res = await api.get('/orders/my-orders');
+    return res.data;
+  } catch (err) {
+    return rejectWithValue(err.response?.data?.message || err.message);
+  }
+});
 
 const slice = createSlice({
   name: 'orders',
