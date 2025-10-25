@@ -30,7 +30,7 @@ const MapTracker = ({ destination }) => {
       >
         <Marker coordinate={location} title="You" pinColor="blue" />
         {destination && (
-          
+          <Marker coordinate={destination} title="Customer" pinColor="green" />
         )}
       </MapView>
     </View>
