@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: delivery_mongo
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  backend:
+    build:
+      context: ./backend
+    container_name: delivery_backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend:/usr/src/app
+      - ./backend/uploads:/usr/src/app/uploads
+
+  admin:
+    build:
+      context: ./admin-panel
+    container_name: delivery_admin
+    restart: unless-stopped
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
