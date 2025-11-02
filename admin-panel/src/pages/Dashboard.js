@@ -12,7 +12,14 @@ const Dashboard = () => {
       { month: "Feb", value: 1500 },
       { month: "Mar", value: 1200 },
       { month: "Apr", value: 1800 },
-      { month: "May", value: 2000 }
+      { month: "May", value: 2000 },
+      { month: "Jun", value: 1000 },
+      { month: "Jul", value: 1500 },
+      { month: "Aug", value: 1200 },
+      { month: "Sept", value: 1800 },
+      { month: "Oct", value: 2000 },
+      { month: "Nov", value: 1800 },
+      { month: "Dec", value: 2000 },
     ]);
   }, []);
 
@@ -25,3 +32,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
